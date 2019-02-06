@@ -7,6 +7,10 @@
  */
 
 // Apply the java plugin to add support for Java
+
+plugins {
+    id 'java'
+}
 apply plugin: 'java'
 
 // In this section you declare where to find the dependencies of your project
@@ -30,4 +34,12 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.N1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.malavin.PlayMain'
+        )
+    }
 }
