@@ -3,12 +3,14 @@ import com.malavin.controls.CommandHandler;
 import com.malavin.lib.GameMenu;
 import com.malavin.models.Gamefield.GameFieldTemplate;
 import com.malavin.models.Player.Player;
+import com.malavin.platforming.Window;
 import com.malavin.views.HUD;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class PlayMain {
+public class PlayMain extends Canvas {
 
     private static final String MAP_DIRECTORY = "./MalavinDataFiles/";
     private static boolean quitted = false;
@@ -89,8 +91,7 @@ public class PlayMain {
         PlayMain.quitted = quitted;
     }
 
-    public static void main(String[] args) {
-
+    public synchronized void start(String[] args){
         Scanner scanner = new Scanner(System.in);
         GameMenu.gameMenu(map, actualField, MAP_DIRECTORY, args);
         System.out.println(prologe);
@@ -103,6 +104,11 @@ public class PlayMain {
         }
 
         System.out.println("QUIT");
+    }
+
+    public static void main(String[] args) {
+
+        new Window (800, 600, "Stella", new PlayMain(), args);
 
     }
 }
